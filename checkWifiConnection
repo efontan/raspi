@@ -1,0 +1,24 @@
+#!/bin/bash
+#
+# Drop this file inside `/et/cron.houtly/` folder or just add a crontab to run this script every one hour:
+# $ crontab -e
+# @hourly /home/dietpi/checkWifiConnection
+#
+# Test it using `run-parts` (your script should be printed but not executed):
+# $ run-parts --test /etc/cron.hourly
+
+while true
+do
+
+    #check connection
+    #    change 192.xxxx to your router IP address
+    if (( $(ping -c 1 192.168.0.1) != 0 )); then
+    
+        # - reconnect
+        ifdown wlan0
+        ifup wlan0
+        
+    fi
+
+done
+
