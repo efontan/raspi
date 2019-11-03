@@ -32,3 +32,7 @@ alias l='ls -CF'
 function mkcd {
   command mkdir $1 && cd $1
 }
+
+alias top3ps="ps -auxf | sort -nr -k 3 | head -3"
+alias temp="sudo vcgencmd measure_temp"
+alias frequency="sudo vcgencmd measure_clock arm"
